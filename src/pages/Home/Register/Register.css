@@ -1,0 +1,205 @@
+/* ==========================================================
+   Smart Library – Register page
+   Same design tokens as Login / Home. Fallback values are the
+   official design-system colors. No fonts or global styles added.
+   ========================================================== */
+
+.register {
+  --navy: #102b3f;
+  --gold: #d7b477;
+  --gold-dark: #b8924f;
+  --bg: #fbfaf7;
+  --text: #183346;
+  --text-2: #879197;
+  --input-bg: #ffffff;
+  --border: #e4e5e1;
+  --danger: #b4443a;
+  --radius: 12px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+
+.register *,
+.register *::before,
+.register *::after { box-sizing: border-box; }
+
+.register a { text-decoration: none; }
+.register h1, .register h2, .register p { margin: 0; }
+
+.register a:focus-visible,
+.register button:focus-visible,
+.register input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Brand panel ---------- */
+.register-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 56px 64px;
+  background: var(--navy);
+  color: #fff;
+  overflow: hidden;
+}
+.register-brand::after {
+  content: "";
+  position: absolute;
+  right: -160px;
+  bottom: -160px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(215, 180, 119, 0.08);
+  pointer-events: none;
+}
+
+.register-logo { display: inline-flex; align-items: center; gap: 12px; color: #fff; }
+.register-logo__mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(215, 180, 119, 0.4);
+  border-radius: 12px;
+  color: var(--gold);
+}
+.register-logo__text { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+.register-logo__text span { font-weight: 400; color: var(--gold); }
+
+.register-brand__body { position: relative; z-index: 1; max-width: 480px; }
+.register-brand__title,
+.register-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.register-brand__title { font-size: clamp(2.4rem, 4vw, 3.6rem); color: #fff; }
+.register-brand__title em { display: block; font-style: italic; font-weight: 600; color: var(--gold); }
+.register-brand__text { margin-top: 20px; font-size: 16px; line-height: 1.65; color: rgba(255, 255, 255, 0.75); }
+
+.register-eyebrow {
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.register-eyebrow--light { color: var(--gold); }
+
+/* ---------- Form panel ---------- */
+.register-panel { display: flex; align-items: center; justify-content: center; padding: 48px 32px; }
+.register-card { width: 100%; max-width: 480px; }
+
+.register-title { font-size: clamp(2rem, 3.4vw, 2.8rem); color: var(--navy); }
+.register-title em { font-style: italic; font-weight: 600; color: var(--gold-dark); }
+.register-subtitle { margin-top: 12px; font-size: 15px; color: var(--text-2); }
+
+.register-form { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+.register-field { display: flex; flex-direction: column; gap: 8px; }
+.register-field label:not(.register-check) { font-size: 14px; font-weight: 600; color: var(--text); }
+
+.register-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 16px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.register-input:hover { border-color: #d3d5cf; }
+.register-input:focus-within { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(215, 180, 119, 0.2); }
+.register-input.has-error { border-color: var(--danger); }
+.register-input.has-error:focus-within { box-shadow: 0 0 0 4px rgba(180, 68, 58, 0.15); }
+
+.register-input__icon { display: flex; color: var(--text-2); }
+.register-input input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0 !important;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+}
+.register-input input::placeholder { color: var(--text-2); }
+.register-input__toggle {
+  display: flex;
+  padding: 6px;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.register-input__toggle:hover { color: var(--navy); }
+
+.register-error { font-size: 13px; color: var(--danger); }
+
+.register-check { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; color: var(--text-2); cursor: pointer; }
+.register-check input { flex-shrink: 0; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--gold-dark); cursor: pointer; }
+.register-check a { color: var(--gold-dark); font-weight: 600; }
+.register-check a:hover { color: var(--navy); }
+
+.register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.register-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(16, 43, 63, 0.25); }
+.register-btn:active { transform: translateY(0); }
+.register-success .register-btn { margin-top: 32px; }
+
+.register-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--text-2); }
+.register-footer a { margin-left: 4px; font-weight: 600; color: var(--gold-dark); transition: color 0.2s; }
+.register-footer a:hover { color: var(--navy); }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 960px) {
+  .register { grid-template-columns: 1fr; }
+  .register-brand { gap: 24px; padding: 32px 32px 40px; }
+  .register-brand__title { font-size: 2.2rem; }
+  .register-brand__title em { display: inline; }
+  .register-brand__text { display: none; }
+  .register-panel { padding: 40px 24px 56px; }
+}
+
+@media (max-width: 480px) {
+  .register-brand { padding: 24px 20px 32px; }
+  .register-panel { padding: 32px 20px 48px; }
+  .register-input { height: 52px; }
+  .register-btn { height: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register *, .register *::before, .register *::after { transition: none !important; }
+}
